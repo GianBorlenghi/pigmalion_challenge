@@ -1,0 +1,52 @@
+public class Main {
+  public static void main(String[] args) {
+    int nums[] = {1, 5, 2, 6}; //declaramos array
+    int requiredSum = 3; //suma requerida
+
+    // --- Forma bruta ---
+    System.out.println("Forma bruta:");
+    boolean encontrado = false;
+
+	//con dos bucles anidados, buscamos la suma de cada numero con todos los restantes.
+    for (int j = 0; j < nums.length; j++) {
+      for (int i = 0; i < nums.length; i++) {
+        if (i != j) { // Condicion para no sumar el mismo índice.
+          if (nums[j] + nums[i] == requiredSum) {
+            System.out.println(true);
+            encontrado = true;
+            break;
+          }
+        }
+      }
+      if (encontrado) {
+      break;
+    	}
+    }
+
+    if (!encontrado) {
+      System.out.println(false);
+    }
+
+    // --- Buscando el complemento ---
+    System.out.println("\nBuscando el complemento:");
+    encontrado = false;
+
+    for (int j = 0; j < nums.length; j++) {
+      int complemento = requiredSum - nums[j];//Buscamos el complemento.
+
+// Buscamos si el complemento ya apareció en una posición anterior.
+      for (int i = 0; i < j; i++) {
+        if (nums[i] == complemento) {
+          System.out.println(true);
+          encontrado = true;
+          break;
+        }
+      }
+      if (encontrado) break;
+    }
+
+    if (!encontrado) {
+      System.out.println(false);
+    }
+  }
+}
